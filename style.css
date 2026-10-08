@@ -1,0 +1,162 @@
+@charset "UTF-8";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dotgothic16-regular {
+  font-family: "DotGothic16", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+main {
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  min-width: 300px;
+  margin: 0 20px;
+}
+
+/* ピクセル風ボタン */
+#drawButton.pixel-btn {
+  position: relative;
+  font-size: 1.3rem;
+  padding: 12px 30px;
+  background: #2f0f0f;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 8px rgba(29, 12, 12, 0.2);
+  margin-bottom: 2rem;
+  image-rendering: pixelated;
+}
+
+.pixel-text {
+  position: relative;
+  z-index: 2;
+}
+
+.pixel-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(90deg, transparent 50%, rgba(255, 255, 255, 0.15) 50%),
+    linear-gradient(0deg, transparent 50%, rgba(255, 255, 255, 0.15) 50%);
+  background-size: 4px 4px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 50px;
+}
+
+#drawButton.pixel-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(106, 15, 15, 0.25);
+  background: #c53620;
+}
+
+#drawButton.pixel-btn:active {
+  transform: translateY(0);
+}
+
+#drawButton.pixel-btn .pixel-grid {
+  opacity: 0;
+  transform: translateY(-100%);
+  animation: pixelScanReverse 0.5s ease forwards;
+}
+
+#drawButton.pixel-btn:hover .pixel-grid {
+  opacity: 1;
+  animation: pixelScan 0.5s ease forwards;
+}
+
+@keyframes pixelScan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes pixelScanReverse {
+  0% { transform: translateY(100%); }
+  100% { transform: translateY(-100%); }
+}
+
+#resultDisplay {
+  font-size: 1.5rem;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 15px;
+  background: #EEE;
+  border: 2px solid #e9ecef;
+}
+
+footer {
+  position: fixed;
+  bottom: 20px;
+  font-size: 0.9rem;
+}
+
+@media (min-width: 601px) {
+  header h1 {
+    font-size: 2.5rem;
+  }
+  
+  main {
+    margin: 0;
+    padding: 3rem;
+  }
+  
+  #drawButton.pixel-btn {
+    font-size: 1.5rem;
+    padding: 15px 40px;
+  }
+  
+  #resultDisplay {
+    font-size: 2rem;
+  }
+}
+
+.daikyou {
+  background-image: linear-gradient(360deg, #3d3480, #676aac);
+  font-weight: bold;
+}
+
+.daikichi {
+  background-image: linear-gradient(180deg, #e3742e, #d83d29);
+  font-weight: bold;
+}
+
+.chukichi {
+  background-image: linear-gradient(180deg, #f5c469, #f5a623);
+  font-weight: bold;
+}
+
+.kichi {
+  background-image: linear-gradient(180deg, #58c35c, #308e35);
+  font-weight: bold;
+}
